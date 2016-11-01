@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = current_user.items.new
   end
 
   def edit
@@ -19,12 +18,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.create(items_params)
-    if @item.save
-      redirect_to items_path
-    else
-      render :new
-    end
+    @item = Item.new(items_params)
+    @item.save
+    redirect_to @item
   end
 
   def update
@@ -49,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def items_params
-    params.require(:item).permit(:item_date, :title, :description, :type_of_course, :price)
+    params.require(:item).permit(:day_order, :title, :description, :course, :price, :user_id)
   end
 
 
