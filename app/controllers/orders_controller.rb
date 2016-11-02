@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :require_login
 
   def index
-    @orders = current_user.orders
+    @orders = Order.all
   end
 
   def show
@@ -11,7 +10,6 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    2.times { @order.line_items.build}
   end
 
   def edit
@@ -19,11 +17,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.create(orders_params)
     if @order.save
-      redirect_to orders_path
+      redirect_to @order
     else
-      render :new
+      render 'new'
     end
   end
 
@@ -42,13 +39,10 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
+
   private
 
-  def require_login
-    redirect_to new_user_path unless current_user
-  end
-
   def orders_params
-    params.require(:order).permit(:title, :description, :order_date, :user_id, :type_of_course, :price)
+    params.require(:order).permit(:title, :order_date, :user_id)
   end
 end

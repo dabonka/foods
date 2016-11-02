@@ -44,10 +44,6 @@ class ItemsController < ApplicationController
 
   private
 
-  def require_login
-    redirect_to new_user_path unless current_user
-  end
-
   def items_params
     params.require(:item).permit(:day_order, :title, :course, :price)
   end
