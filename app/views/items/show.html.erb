@@ -9,11 +9,6 @@
 </p>
  
 <p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-
-<p>
   <strong>Price:</strong>
   <%= @item.price %>
 </p>
@@ -29,3 +24,4 @@
   <%= @item.course %>
 </p>
 
+<td><%= link_to("Edit", edit_item_path) %></td>

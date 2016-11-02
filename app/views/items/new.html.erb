@@ -2,14 +2,8 @@
 
 <%= form_tag(items_path, method: "post") do %>
 
-<p> <%= label_tag(:item, "Title") %></p>
+<p> <%= label_tag(:item, "Name") %></p>
 <p><%= text_field(:item, :title) %></p>
-
-<p> <%= label_tag(:item, "Description") %></p>
-<p><%= text_field(:item, :description) %></p>
-
-
-
 
 <p> <%= label_tag(:item, "Price") %></p>
 <p> <%= number_field(:item, :price, in: 0.01..9999999.99, step: 0.01) %></p>

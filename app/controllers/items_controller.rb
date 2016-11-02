@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :require_login
 
   def index
-    @items = current_user.items
+    @items = Item.all
   end
 
   def show
@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def edit
@@ -18,9 +19,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(items_params)
-    @item.save
-    redirect_to @item
+    if @item.save
+      redirect_to @item
+    else
+      render 'new'
+  end
+
   end
 
   def update
@@ -45,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def items_params
-    params.require(:item).permit(:day_order, :title, :description, :course, :price, :user_id)
+    params.require(:item).permit(:day_order, :title, :course, :price)
   end
 
 
