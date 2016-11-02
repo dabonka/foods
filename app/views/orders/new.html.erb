@@ -1,2 +1,11 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<%= form_for @order do |f| %>
+  LineItems:
+  <ul>
+    <%= f.fields_for :line_items do |line_items_form| %>
+      <li>
+        <%= line_items_form.label :title %>
+        <%= line_items_form.text_field :title %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

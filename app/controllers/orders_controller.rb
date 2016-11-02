@@ -10,7 +10,8 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = current_user.orders.new
+    @order = Order.new
+    2.times { @order.line_items.build}
   end
 
   def edit

@@ -1,2 +1,12 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+  <% @items.each do |item| %>
+
+    <tr>
+      <td><%= item.title %></td>
+      <td><%= item.day_order %></td>
+      <td><%= item.price %></td>
+      <td><%= item.course %></td>
+      <td><%= link_to 'Show', item_path(item) %></td>
+      <td><%= link_to("Edit", edit_item_path(item) ) %></td>
+      <td><%= link_to("Delete",item_path(item), method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+    </tr>
+  <% end %>
