@@ -17,11 +17,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if @order.save
-      redirect_to @order
-    else
-      render 'new'
-    end
+    @order = Order.create(order_params)
+    redirect_to orders_path
   end
 
   def update
@@ -42,7 +39,7 @@ class OrdersController < ApplicationController
 
   private
 
-  def orders_params
-    params.require(:order).permit(:title, :order_date, :user_id)
-  end
+    def order_params
+      params.require(:order).permit(:name, :price, :picture, item_ids: [])
+    end
 end

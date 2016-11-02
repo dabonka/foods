@@ -1,11 +1,4 @@
-<%= form_for @order do |f| %>
-  LineItems:
-  <ul>
-    <%= f.fields_for :line_items do |line_items_form| %>
-      <li>
-        <%= line_items_form.label :title %>
-        <%= line_items_form.text_field :title %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<%= semantic_form_for Order.new do |f| %>
+    <%= f.input :item_ids, as: :check_boxes, collection: Item.all %>
+    <%= f.actions %>
+  <% end %>

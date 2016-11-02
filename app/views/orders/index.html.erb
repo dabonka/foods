@@ -1,5 +1,21 @@
-<%= semantic_form_for Order.new do |f| %>
-    <%= f.inputs :order_items_attributes, as: :check_boxes, collection: Item.all %>
-    <%= f.actions %>
-  <% end %>
+<h1>Listing orders</h1>
+<div>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Item ID</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
 
+  <% @orders.each do |order| %>
+
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= link_to 'Show', order_path(order) %></td>
+      <td><%= link_to("Edit", edit_order_path(order) ) %></td>
+      <td><%= link_to("Delete",order_path(order), method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+    </tr>
+  <% end %>
+</table>

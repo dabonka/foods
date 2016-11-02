@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
 
-  before_action :require_login
 
   def index
     @items = Item.all
@@ -19,12 +18,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    if @item.save
-      redirect_to @item
-    else
-      render 'new'
-  end
-
+    @item = Item.new(items_params)
+    @item.save
+    redirect_to @item
   end
 
   def update
@@ -43,6 +39,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def require_login
+    redirect_to new_user_path unless current_user
+  end
 
   def items_params
     params.require(:item).permit(:day_order, :title, :course, :price)
