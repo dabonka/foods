@@ -31,15 +31,6 @@ ActiveRecord::Schema.define(version: 20161103192324) do
     t.index ["order_id", "item_id"], name: "index_items_orders_on_order_id_and_item_id", using: :btree
   end
 
-  create_table "line_items", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_line_items_on_item_id", using: :btree
-    t.index ["order_id"], name: "index_line_items_on_order_id", using: :btree
-  end
-
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
