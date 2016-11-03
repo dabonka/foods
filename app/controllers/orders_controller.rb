@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
+    byebug
     if @order.save
       redirect_to orders_path
     else
