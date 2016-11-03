@@ -18,8 +18,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
-    byebug
+    @order.user_id = current_user.id
+    @order.save!
     if @order.save
       redirect_to orders_path
     else
@@ -46,6 +46,6 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:name, :price, :picture, item_ids: [])
+      params.require(:order).permit(:name, :price, :user_id, :order_date, :picture, item_ids: [])
     end
 end
