@@ -1,2 +1,27 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<p>
+  <strong>ID:</strong>
+  <%= @order.id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @order.title %>
+</p>
+ 
+<p>
+  <strong>Order Date:</strong>
+  <%= @order.order_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <strong>Item_ids:</strong>
+  <%= @order.item_ids %>
+</p>
+
+
+<td><%= link_to("Edit", edit_order_path) %></td>

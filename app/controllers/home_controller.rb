@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @today = Time.new
-    @day_today = (@today).strftime("%A")
+    @items = Item.all
   end
 end

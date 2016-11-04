@@ -1,1 +1,15 @@
-<p>home index views</p>
+<p>Here is some information about service</p>
+<p>Below please find list of items</p>
+<div>
+<table>
+  <tr>
+    <th>Day Order</th>
+  </tr>
+
+  <% @items.each do |menu| %>
+
+    <tr>
+      <td><%= link_to(menu.day_order, edit_item_path) %></td>
+    </tr>
+  <% end %>
+</table>

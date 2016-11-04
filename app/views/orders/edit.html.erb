@@ -1,2 +1,4 @@
-<h1>Orders#edit</h1>
-<p>Find me in app/views/orders/edit.html.erb</p>
+<%= semantic_form_for Order.new do |f| %>
+    <%= f.input :item_ids, as: :check_boxes, collection: Item.all %>
+    <%= f.actions %>
+  <% end %>
