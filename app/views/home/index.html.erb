@@ -3,13 +3,13 @@
 <div>
 <table>
   <tr>
-    <th>Day Order</th>
+    <th>Days for Menu Order</th>
   </tr>
 
-  <% @items.each do |menu| %>
+  <% @item_dates.each do |menu| %>
 
     <tr>
-      <td><%= link_to(menu.day_order, edit_item_path) %></td>
+      <td><%= link_to(menu.day_order, new_order_path(:order_date => '2013-01-01')) %></td>
     </tr>
-  <% end %>
+  <% end %>.
 </table>

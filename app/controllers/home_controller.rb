@@ -2,6 +2,6 @@ class HomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @items = Item.all
+    @item_dates = Item.select(:day_order).distinct
   end
 end
