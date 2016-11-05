@@ -9,7 +9,7 @@
   <% @item_dates.each do |menu| %>
 
     <tr>
-      <td><%= link_to(menu.day_order, new_order_path(:order_date => '2013-01-01')) %></td>
+      <td><%= link_to(menu.day_order, new_order_path) %></td>
     </tr>
   <% end %>.
 </table>
