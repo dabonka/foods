@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.save!
     if @order.save
-      redirect_to orders_path
+      redirect_to root_path
     else
       render 'new'
     end

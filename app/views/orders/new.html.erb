@@ -1,7 +1,9 @@
 <%= semantic_form_for @order do |f| %>
 
   <%= f.inputs do %>
-    <%= f.input :item_ids, as: :check_boxes, collection: Item.where("day_order = '2016-11-04'") %>
+    <%= f.input :item_ids, as: :select, collection: Item.where(day_order: Date.today, course: "First") %>
+    <%= f.input :item_ids, as: :select, collection: Item.where(day_order: Date.today, course: "Second") %>
+    <%= f.input :item_ids, as: :select, collection: Item.where(day_order: Date.today, course: "Third") %>
   <% end %>
 
   <%= f.actions do %>
