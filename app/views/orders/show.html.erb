@@ -4,24 +4,24 @@
 </p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @order.title %>
-</p>
- 
-<p>
   <strong>Order Date:</strong>
   <%= @order.order_date %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @order.user_id %>
-</p>
-
-<p>
-  <strong>Item_ids:</strong>
-  <%= @order.item_ids %>
+  <%= @order.user.email %>
 </p>
 
 
-<td><%= link_to("Edit", edit_order_path) %></td>
+  <strong>Order:</strong>
+      <% @order.items.each do |i| %>
+ <p>  <%= i.title %>
+      <%= i.price %></p>
+  <% end %>
+
+
+
+
+<%= link_to("Edit", edit_order_path) %>
+

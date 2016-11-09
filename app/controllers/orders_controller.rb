@@ -19,9 +19,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(item_ids: (order_params[:first_course]+ order_params[:second_course]+ order_params[:third_course]) - ["", nil])
     @order.user_id = current_user.id
-    @order.save!
+    @order.order_date = Date.today
+      @order.save!
     if @order.save
       redirect_to root_path
     else
@@ -48,6 +49,6 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:name, :price, :user_id, :order_date, :picture, item_ids: [])
+      params.require(:order).permit(:name, :price, :user_id, :order_date, first_course: [], second_course: [], third_course: [])
     end
 end
