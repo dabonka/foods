@@ -1,0 +1,15 @@
+<p>Here is some information about service</p>
+<p>Below please find list of items</p>
+<div>
+<table>
+  <tr>
+    <th>Days</th>
+  </tr>
+
+  <% @item_dates.each do |menu| %>
+
+    <tr>
+      <td><%= link_to(menu.day_order, new_order_path) %></td>
+    </tr>
+  <% end %>
+</table>

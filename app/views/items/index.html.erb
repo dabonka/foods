@@ -1,0 +1,27 @@
+<h1>Listing items</h1>
+<div>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Day Order</th>
+    <th>Price</th>
+    <th>Course</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <% @items.each do |item| %>
+
+    <tr>
+      <td><%= item.title %></td>
+      <td><%= item.day_order %></td>
+      <td><%= item.price %></td>
+      <td><%= item.course %></td>
+      <td><%= link_to 'Show', item_path(item) %></td>
+      <td><%= link_to("Edit", edit_item_path(item) ) %></td>
+      <td><%= link_to("Delete",item_path(item), method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+    </tr>
+  <% end %>
+</table>
+

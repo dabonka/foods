@@ -1,0 +1,4 @@
+<%= semantic_form_for Order.new do |f| %>
+    <%= f.input :item_ids, as: :check_boxes, collection: Item.all %>
+    <%= f.actions %>
+  <% end %>

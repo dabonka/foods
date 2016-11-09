@@ -1,0 +1,27 @@
+<p>
+  <strong>ID:</strong>
+  <%= @order.id %>
+</p>
+
+<p>
+  <strong>Order Date:</strong>
+  <%= @order.order_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user.email %>
+</p>
+
+
+  <strong>Order:</strong>
+      <% @order.items.each do |i| %>
+ <p>  <%= i.title %>
+      <%= i.price %></p>
+  <% end %>
+
+
+
+
+<%= link_to("Edit", edit_order_path) %>
+
