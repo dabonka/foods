@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(items_params)
     @item.save
-    redirect_to @item
+    redirect_to items_path
   end
 
   def update
