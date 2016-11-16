@@ -10,16 +10,17 @@
     <th>Delete</th>
   </tr>
 
-  <% @orders.each do |order| %>
+  <% @orders.where(order_date: Date.today).find_each do |order| %>
 
     <tr>
       <td><%= order.order_date %></td>
       <td><%= order.user.email %></td>
-      <td>
+      <td><% sum_price = []%>
           <% order.items.sort_by{ |elem| elem.course }.each do |i| %>
             <%= i.title %> - <%= i.price %> руб. <br>
-
-          <% end %>
+            <% sum_price << i.price %>
+            <% end %>
+            Total: <%= sum_price.inject(:+) %> руб.
 
         </td>
       <td><%= link_to 'Show', order_path(order) %></td>
@@ -28,3 +29,4 @@
     </tr>
   <% end %>
 </table>
+

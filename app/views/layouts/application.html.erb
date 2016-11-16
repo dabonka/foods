@@ -29,13 +29,15 @@
           <%= link_to 'Login', new_user_session_path %>
       <% end %>
       </div>
-    </header>
-
+      </header>
+      <div class="container">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-        <div class="container">
-          <%= yield %>
-        </div>    
+      </div>
+      
+      <div class="container">
+        <%= yield %>
+      </div>    
     
   </body>
 </html>
