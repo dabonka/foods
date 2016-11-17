@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   authorize_resource
 
   def index
-    @orders = Order.all
+    @today_orders = Order.all.where(order_date: Date.today)
   end
 
   def show

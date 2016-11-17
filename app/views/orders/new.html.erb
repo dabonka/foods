@@ -1,18 +1,22 @@
-<%= semantic_form_for @order do |f| %>
+  <table class = "table">
+      <%= semantic_form_for @order do |f| %>
+      <%= f.inputs do %>
+    <tr>
+      <td>
+          <%= f.input :first_course, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "First").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
+      </td>
 
-  <%= f.inputs do %>
-    <%= f.input :first_course, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "First").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
-    <%= f.input :second_course, as: :check_boxes,  collection: Item.where(day_order: Date.today, course: "Second").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
-    <%= f.input :third_course, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "Third").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
+      <td> <%= f.input :second_course, as: :check_boxes,  collection: Item.where(day_order: Date.today, course: "Second").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
+      </td>
 
-  <% end %>
+      <td> <%= f.input :third_course, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "Third").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
+      <% end %>
+      </td>
+    </tr>
+  </table>
 
-  <%= f.actions do %>
-      <%= f.action :submit, :as => :button %>    
-  <% end %>
+        <%= f.actions do %>
+            <%= f.action :submit, :as => :button %>    
+        <% end %>
 
-<% end %>
-
-
-
-
+      <% end %>

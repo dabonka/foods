@@ -1,32 +1,25 @@
-<h1>Listing orders</h1>
 <div>
-<table>
-  <tr>
-    <th>Order Date</th>
-    <th>User</th>
-    <th>Menu</th>
-    <th>Show</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-
-  <% @orders.where(order_date: Date.today).find_each do |order| %>
-
+  <table class = "table">
+   <caption>List orders</caption>
     <tr>
-      <td><%= order.order_date %></td>
-      <td><%= order.user.email %></td>
-      <td><% sum_price = []%>
-          <% order.items.sort_by{ |elem| elem.course }.each do |i| %>
-            <%= i.title %> - <%= i.price %> руб. <br>
-            <% sum_price << i.price %>
-            <% end %>
-            Total: <%= sum_price.inject(:+) %> руб.
-
-        </td>
-      <td><%= link_to 'Show', order_path(order) %></td>
-      <td><%= link_to("Edit", edit_order_path(order) ) %></td>
-      <td><%= link_to("Delete",order_path(order), method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+      <th>Order Date</th>
+      <th>User</th>
+      <th>Menu</th>
     </tr>
-  <% end %>
-</table>
 
+    <% @today_orders.find_each do |order| %>
+
+      <tr>
+        <td><%= order.order_date %></td>
+        <td><%= order.user.email %></td>
+        <td>  <% order.items.sort_by{ |elem| elem.course }.each do |i| %>
+              <%= i.title %> - <%= i.price %> руб. <br>
+              <% end %>
+              <b>Total: <%= order.items.pluck(:price).sum %> руб.</b>
+        </td>
+      </tr>
+
+    <% end %>
+
+  </table>
+</div>
