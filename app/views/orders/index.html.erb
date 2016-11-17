@@ -1,10 +1,11 @@
 <div>
-  <table class = "table">
+  <table class = "table table-striped">
    <caption>List orders</caption>
     <tr>
       <th>Order Date</th>
       <th>User</th>
       <th>Menu</th>
+      <th>Amount</th>
     </tr>
 
     <% @today_orders.find_each do |order| %>
@@ -15,8 +16,9 @@
         <td>  <% order.items.sort_by{ |elem| elem.course }.each do |i| %>
               <%= i.title %> - <%= i.price %> руб. <br>
               <% end %>
-              <b>Total: <%= order.items.pluck(:price).sum %> руб.</b>
         </td>
+        <td><b>Total: <%= order.items.pluck(:price).sum %> руб.</b></td>
+        
       </tr>
 
     <% end %>
