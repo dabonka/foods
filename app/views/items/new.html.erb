@@ -9,4 +9,15 @@
   <p> <%= f.button :submit %></p>
 <% end %>
 
+<% if @item.errors.any? %>
+  <div id="error_explanation">
+    <p><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</p>
+ 
+    <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 

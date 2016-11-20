@@ -16,32 +16,6 @@
   </table>
 
     <%= f.actions do %>
-        <%= f.action :submit, :as => :button %>    
-    <% end %>
-
-    <% end %>
-
-
-
-
-      <table class = "table table-bordered">
-      <%= semantic_form_for @order do |f| %>
-      <%= f.inputs do %>
-    <tr>
-      <td>
-          <%= f.input :first_course, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "First").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
-      </td>
-
-      <td> <%= f.input :second_course, as: :check_boxes,  collection: Item.where(day_order: Date.today, course: "Second").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
-      </td>
-
-      <td> <%= f.input :third_course, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "Third").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
-      <% end %>
-      </td>
-    </tr>
-  </table>
-
-    <%= f.actions do %>
         <%= f.action :submit, :button_html => { :class => "btn btn-default"} %>    
     <% end %>
 
