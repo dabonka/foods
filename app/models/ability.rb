@@ -19,7 +19,7 @@ class Ability
   end
 
   def user_abilities
-    can :read, [Item, Order]
+    can :read, [Item]
     can :create, [Order]
     can :update, [Order], user_id: @user.id
     can :destroy, [Order], user_id: @user.id

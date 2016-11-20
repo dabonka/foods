@@ -1,24 +1,23 @@
 <p>Notice: all menu will be entered by current date</p>
 
-<%= form_tag(items_path, method: "post") do %>
-
-<p> <%= label_tag(:item, "Name") %></p>
-<p><%= text_field(:item, :title) %></p>
-
-<p> <%= label_tag(:item, "Price") %></p>
-<p> <%= number_field(:item, :price, in: 0.01..9999999.99, step: 0.01) %></p>
-
-
-<%= radio_button_tag("item[course]", "First") %>
-<%= label_tag("item[course]", "First course") %>
-<%= radio_button_tag("item[course]", "Second") %>
-<%= label_tag("item[course]", "Second course") %>
-<%= radio_button_tag("item[course]", "Third") %>
-<%= label_tag("item[course]", "Third course") %>
-
-<%= hidden_field_tag("item[day_order]", Time.now.strftime("%d/%m/%Y")) %>
-
-<p><%= submit_tag("Submit") %></p>
+<%= simple_form_for @item, url: items_path do |f| %>
+  <p> <%= f.input :title, label: 'Name of item', error: 'Name is mandatory, please specify one' %></p>
+  <p> <%= f.collection_radio_buttons :course, [["First", "First course"] ,["Second", "Second course"] ,["Third", "Third course"]], :first, :last%></p>
+  <p> <%= f.input :price, in: 0.01..9999999.99, step: 0.01 %></p>
+  <p> <%= f.input :avatar, as: :file %></p>
+      <%= f.hidden_field :day_order, value: Time.now.strftime("%d/%m/%Y") %>
+  <p> <%= f.button :submit %></p>
 <% end %>
 
+<% if @item.errors.any? %>
+  <div id="error_explanation">
+    <p><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</p>
+ 
+    <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 

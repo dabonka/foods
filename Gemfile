@@ -4,6 +4,9 @@ gem 'devise'
 gem 'pg'
 gem 'formtastic'
 gem 'cancancan', '~> 1.10'
+gem "paperclip", "~> 5.0.0"
+gem 'simple_form'
+gem 'bootstrap', '~> 4.0.0.alpha3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -46,6 +49,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec-rails'
+  gem "factory_girl_rails"
+  gem 'capybara'
+  gem "shoulda-matchers"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

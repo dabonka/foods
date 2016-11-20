@@ -1,21 +1,27 @@
-<h1>Listing orders</h1>
 <div>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Item ID</th>
-    <th>Show</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-
-  <% @orders.each do |order| %>
-
+  <table class = "table table-striped">
+   <caption>List orders</caption>
     <tr>
-      <td><%= order.id %></td>
-      <td><%= link_to 'Show', order_path(order) %></td>
-      <td><%= link_to("Edit", edit_order_path(order) ) %></td>
-      <td><%= link_to("Delete",order_path(order), method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+      <th>Order Date</th>
+      <th>User</th>
+      <th>Menu</th>
+      <th>Amount</th>
     </tr>
-  <% end %>
-</table>
+
+    <% @today_orders.find_each do |order| %>
+
+      <tr>
+        <td><%= order.order_date %></td>
+        <td><%= order.user.email %></td>
+        <td>  <% order.items.sort_by{ |elem| elem.course }.each do |i| %>
+              <%= i.title %> - <%= i.price %> руб. <br>
+              <% end %>
+        </td>
+        <td><b>Total: <%= order.items.pluck(:price).sum %> руб.</b></td>
+        
+      </tr>
+
+    <% end %>
+
+  </table>
+</div>
