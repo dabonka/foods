@@ -1,21 +1,16 @@
 require 'rails_helper'
 require 'spec_helper'
 require 'capybara/rspec'
-
-
+require_relative "../features/feature_helper.rb"
 
 describe  "Items", :type => :feature do
 
   let!(:user) { create(:user) }
 
   describe "Create new item" do
+  before{ sign_in(user.email, user.password) }
 
     it "Create new item with correct data" do
-      visit '/users/sign_in'
-      fill_in 'Email', with: 'user@test.com'
-      fill_in 'Password', with: '12345678'
-      click_button 'Log in'
-      expect(page).to have_content 'Signed in successfully.'
       visit '/items/new'
       fill_in 'item_title', with: 'Борщ'
       fill_in 'Price', with: 5
