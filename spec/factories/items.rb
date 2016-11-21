@@ -4,6 +4,5 @@ FactoryGirl.define do
     price 5
     course "First"
     day_order Date.current
-    association :user, factory: :user
   end
 end
