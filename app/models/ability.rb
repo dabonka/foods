@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     @user = user
     if user
-      user.id == 1 ? admin_abilities : user_abilities
+      user.id == User.first.id ? admin_abilities : user_abilities
     else
       guest_abilities
     end

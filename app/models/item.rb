@@ -6,4 +6,8 @@ class Item < ApplicationRecord
 
   validates :title, :price, :course, presence: true
 
+  def to_label
+    "#{self.title} - #{self.price} руб."
+  end
+
 end
