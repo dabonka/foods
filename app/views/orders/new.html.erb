@@ -1,19 +1,20 @@
-      <%= semantic_form_for @order do |f| %>
-      <%= f.inputs do %>
+      <%= simple_form_for @order do |f| %>
+
     <tr>
-      <td>
-          <%= f.input :first_course, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "First").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
+      <td> First course: <%= f.association :items, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "First"), value_method: :id %>
       </td>
 
-      <td> <%= f.input :second_course, as: :check_boxes,  collection: Item.where(day_order: Date.today, course: "Second").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
+      <td> Second course: <%= f.association :items, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "Second"), value_method: :id %>
       </td>
 
-      <td> <%= f.input :third_course, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "Third").map{|item| ["#{item.title} — #{item.price} RUB", item.id]} %>
-      <% end %>
+      <td> Third course: <%= f.association :items, as: :check_boxes, collection: Item.where(day_order: Date.today, course: "Third"), value_method: :id %>
       </td>
     </tr>
-    <%= f.actions do %>
-        <%= f.action :submit %>    
+
+
+
+        <%= f.button :submit %>    
     <% end %>
 
-    <% end %>
+
+

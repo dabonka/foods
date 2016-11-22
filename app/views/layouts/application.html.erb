@@ -18,11 +18,12 @@
           <%= link_to 'Edit profile', edit_user_registration_path %>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
           <% if current_user.id == User.first.id %>    
-            <p><%= link_to 'List Orders', orders_path %>
+            <p><%= link_to 'New Order', new_order_path %> 
+            <%= link_to 'List Orders', orders_path %>
             <%= link_to 'New Item', new_item_path %>
             <%= link_to 'List Items', items_path %></p>
           <% else %> 
-          <%= link_to 'New Order', new_order_path %> 
+          
         <% end %>
 
         <% else %>

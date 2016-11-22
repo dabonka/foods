@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(item_ids: (order_params[:first_course]+ order_params[:second_course]+ order_params[:third_course]) - ["", nil])
+    @order = Order.new(order_params)
     @order.user_id = current_user.id
     @order.order_date = Date.today
       @order.save!
@@ -51,6 +51,6 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:name, :price, :user_id, :order_date, first_course: [], second_course: [], third_course: [])
+      params.require(:order).permit(:name, :price, :user_id, :order_date, first_course: [], second_course: [], third_course: [], item_ids: [])
     end
 end
