@@ -15,7 +15,6 @@ describe  "Orders", :type => :feature do
       fill_in 'item_title', with: 'Борщ'
       fill_in 'Price', with: 5
       choose('First')
-      attach_file Rails.root.join('spec/fixture/some_file.png')
       click_button 'Create Item'
       expect(page).to have_content 'Listing items'
       visit '/orders/new'
