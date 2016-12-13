@@ -12,8 +12,6 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-# Use Puma as the app server
-gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -53,6 +51,14 @@ group :development do
   gem "factory_girl_rails"
   gem 'capybara'
   gem "shoulda-matchers"
+  # Гем, который добавляет специфические для Rails таски, такие как прогон миграций и компиляция ассетов
+  gem 'capistrano-rails'
+  # Гем, добавляющий возможности bundle к capistrano
+  gem 'capistrano-bundler'
+  # Добавление поддержки Rbenv (менеджера версий для Ruby)
+  gem 'capistrano-rbenv'
+  # Интеграция пумы и капистрано
+  gem 'capistrano3-puma'
 end
 
 group :test do
@@ -62,6 +68,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'rails_12factor', group: :production
-
 ruby "2.3.1"
+
+group :production do 
+  # Puma - это Ruby/Rack сервер, который будет получать запросы из Nginx и направлять их в Rails, эдакое связующее звено
+  gem 'puma', '~> 3.0'
+  gem 'rails_12factor'
+end
