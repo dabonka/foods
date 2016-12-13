@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: postgresql
-  database: food_production
+  database: foods_production
   pool: 5
   timeout: 5000
   username: postgres
